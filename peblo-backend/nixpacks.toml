@@ -5,4 +5,4 @@ NODE_VERSION = "20"
 cmds = ["npm install", "npx prisma generate"]
 
 [start]
-cmd = "node index.js"
+cmd = "npx prisma migrate deploy && node index.js"
