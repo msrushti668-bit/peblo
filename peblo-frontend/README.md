@@ -139,7 +139,7 @@ npm run dev
 3. Set **Root Directory** → `peblo-frontend`
 4. Under **Environment Variables**, add:
    ```
-   NEXT_PUBLIC_API_URL = https://your-railway-url.up.railway.app
+   NEXT_PUBLIC_API_URL = https://peblo-production-9339.up.railway.app
    ```
 5. Click **Deploy**
 
