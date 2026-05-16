@@ -13,6 +13,10 @@ app.use('/auth', authRoutes);
 app.use('/notes', notesRoutes);
 app.use('/dashboard', dashboardRoutes);
 
+// Health check for Railway
+app.get('/', (req, res) => res.json({ status: 'ok', app: 'peblo-backend' }));
+app.get('/health', (req, res) => res.json({ status: 'ok' }));
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
