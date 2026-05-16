@@ -2,6 +2,8 @@
 
 > Turn your unstructured notes into actionable insights with NVIDIA NIM AI.
 
+🌐 **Live Demo**: [peblo-six.vercel.app](https://peblo-six.vercel.app)
+
 Peblo is a full-stack productivity app that automatically summarizes your notes, extracts action items, and tracks your activity — powered by **Llama 3.1 via NVIDIA NIM**.
 
 ---
