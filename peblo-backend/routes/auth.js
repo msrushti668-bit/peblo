@@ -23,7 +23,8 @@ router.post('/signup', async (req, res) => {
     });
 
     // Generate JWT Token
-    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+    const secret = process.env.JWT_SECRET || "peblo_default_secret_string_123";
+    const token = jwt.sign({ userId: user.id }, secret, { expiresIn: '7d' });
     
     res.json({ token, user: { id: user.id, name: user.name, email: user.email } });
   } catch (error) {
@@ -44,7 +45,8 @@ router.post('/login', async (req, res) => {
     if (!validPassword) return res.status(401).json({ error: 'Invalid password' });
 
     // Generate JWT Token
-    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+    const secret = process.env.JWT_SECRET || "peblo_default_secret_string_123";
+    const token = jwt.sign({ userId: user.id }, secret, { expiresIn: '7d' });
     
     res.json({ token, user: { id: user.id, name: user.name, email: user.email } });
   } catch (error) {

@@ -9,7 +9,8 @@ export function authMiddleware(req, res, next) {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const secret = process.env.JWT_SECRET || "peblo_default_secret_string_123";
+    const decoded = jwt.verify(token, secret);
     req.user = decoded; // { userId, iat, exp }
     next();
   } catch (err) {
