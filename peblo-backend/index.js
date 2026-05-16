@@ -17,6 +17,18 @@ app.use('/dashboard', dashboardRoutes);
 app.get('/', (req, res) => res.json({ status: 'ok', app: 'peblo-backend' }));
 app.get('/health', (req, res) => res.json({ status: 'ok' }));
 
+// DB diagnostic — remove after confirming DB works
+import { PrismaClient } from '@prisma/client';
+const prisma = new PrismaClient();
+app.get('/db-check', async (req, res) => {
+  try {
+    const count = await prisma.user.count();
+    res.json({ status: 'ok', userCount: count });
+  } catch (err) {
+    res.status(500).json({ status: 'error', detail: err.message });
+  }
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
