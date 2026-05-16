@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "node --watch index.js",
-    "build": "prisma generate && prisma migrate deploy"
+    "build": "prisma generate"
   },
   "keywords": [],
   "author": "",
