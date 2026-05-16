@@ -1,0 +1,9 @@
+{
+  "buildCommand": "cd peblo-frontend && npm install && npm run build",
+  "outputDirectory": "peblo-frontend/.next",
+  "installCommand": "cd peblo-frontend && npm install",
+  "framework": "nextjs",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/$1" }
+  ]
+}
