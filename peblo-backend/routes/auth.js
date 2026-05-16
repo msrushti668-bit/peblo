@@ -27,7 +27,7 @@ router.post('/signup', async (req, res) => {
     
     res.json({ token, user: { id: user.id, name: user.name, email: user.email } });
   } catch (error) {
-    res.status(500).json({ error: 'Signup failed' });
+    res.status(500).json({ error: 'Signup failed', detail: error.message });
   }
 });
 
@@ -48,7 +48,7 @@ router.post('/login', async (req, res) => {
     
     res.json({ token, user: { id: user.id, name: user.name, email: user.email } });
   } catch (error) {
-    res.status(500).json({ error: 'Login failed' });
+    res.status(500).json({ error: 'Login failed', detail: error.message });
   }
 });
 

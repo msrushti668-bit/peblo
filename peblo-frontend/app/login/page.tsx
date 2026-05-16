@@ -34,7 +34,7 @@ export default function LoginPage() {
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Authentication failed");
+      if (!res.ok) throw new Error(data.detail || data.error || "Authentication failed");
 
       setToken(data.token);
       router.push("/dashboard");
