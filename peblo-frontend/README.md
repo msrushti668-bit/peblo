@@ -116,8 +116,29 @@ npm run dev
 
 ## Deployment
 
-- **Backend** → [Railway](https://railway.app) (set root dir to `peblo-backend`)
-- **Frontend** → [Vercel](https://vercel.com) (set root dir to `peblo-frontend`)
-- **Database** → PostgreSQL via Railway plugin
+### Backend → Railway
 
-Set `NEXT_PUBLIC_API_URL` in Vercel to your Railway backend URL.
+1. Go to [railway.app](https://railway.app) → **New Project**
+2. Click **Deploy from GitHub repo** → select `msrushti668-bit/peblo`
+3. Set **Root Directory** → `peblo-backend`
+4. Click **+ New** → **Database** → **Add PostgreSQL** (auto-sets `DATABASE_URL`)
+5. Go to **Variables** tab and add:
+   ```
+   LLM_API_KEY   = your-nvidia-nim-key
+   LLM_BASE_URL  = https://integrate.api.nvidia.com/v1
+   JWT_SECRET    = your-64-char-secret
+   ```
+6. Railway will auto-deploy. Copy your **Public URL** from Settings.
+
+### Frontend → Vercel
+
+1. Go to [vercel.com](https://vercel.com) → **New Project**
+2. Import `msrushti668-bit/peblo` from GitHub
+3. Set **Root Directory** → `peblo-frontend`
+4. Under **Environment Variables**, add:
+   ```
+   NEXT_PUBLIC_API_URL = https://your-railway-url.up.railway.app
+   ```
+5. Click **Deploy**
+
+> The database schema is applied automatically on first startup via `prisma migrate deploy`.
